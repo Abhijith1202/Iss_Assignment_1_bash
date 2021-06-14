@@ -1,5 +1,5 @@
 #!/bin/bash
-cat $1 | awk '{ print $1 > "q2out.txt" }'
+cat $1 | awk '{ print $1 }' | tr '\n' ',' > q2_output.txt 
 a=`cat $1 | awk '{ print $2}'`
 #echo $a (works, gives dd/mm/yyyy)
 dd=`echo $a | awk -F "/" '{print $1}'`
@@ -42,5 +42,5 @@ if [ "$monthage" -gt "6" ]
 then
 	yearage=`expr $yearage + 1`
 fi
-echo age: $yearage years > "q2_output.txt"
+echo age: $yearage years >> "q2_output.txt"
 #echo "age: $yearage years $monthage months" | tee -a q2out.txt
